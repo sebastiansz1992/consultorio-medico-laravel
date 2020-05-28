@@ -9,7 +9,7 @@ class EspecialidadesController extends Controller
 {
     public function obtenerTodasEspecialidades()
     {
-        $especialidades = Especialidades::all();
+        $especialidades = Especialidades::select('*')->where('activo', 1)->get();
         return response()->json($especialidades);
     }
 }
