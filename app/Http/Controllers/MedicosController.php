@@ -7,6 +7,11 @@ use App\RegistroMedicos;
 
 class MedicosController extends Controller
 {
+    public function inicioSesionMedico($correo, $contrasenia) {
+        $medico = RegistroMedicos::select('*')->where('numeroIdentificacion', $contrasenia)->where('correoElectronico', $correo)->get();
+        return response()->json($medico);
+    }
+
     public function registrarMedico(Request $request)
     {
         $registroMedico = RegistroMedicos::create($request->all());
